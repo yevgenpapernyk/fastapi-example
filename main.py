@@ -2,6 +2,8 @@ from enum import Enum
 
 from fastapi import FastAPI
 
+from items.person_item import PersonItem
+
 app = FastAPI()
 
 
@@ -47,4 +49,6 @@ async def optional(first_name: FirstNameEnum | None = None):
     return {'message': message}
 
 
-
+@app.post('/post_person')
+async def post_person(item: PersonItem):
+    return item
